@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-oatmeal: #F5F5F0;
+  --color-charcoal: #4A4A4A;
+  --color-smoky-pink: #E9D5DA;
+  --color-smoky-pink-dark: #DDBBB5;
+  --color-soft-white: #faf9f7;
+  
+  --font-serif: "Noto Serif SC", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+body {
+  background-color: var(--color-oatmeal);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6, .font-serif {
+  font-family: var(--font-serif);
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3 {
+  font-family: var(--font-serif);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  color: var(--color-charcoal);
+}
+
+.markdown-body p {
+  margin-bottom: 1.2em;
+  line-height: 1.7;
+}
+
+.markdown-body ul {
+  list-style-type: disc;
+  padding-left: 1.5em;
+  margin-bottom: 1.2em;
+}
+
+.markdown-body a {
+  color: var(--color-smoky-pink-dark);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
