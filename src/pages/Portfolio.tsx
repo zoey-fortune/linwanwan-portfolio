@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
+import { getPortfolioList } from "../lib/content";
 
 export function Portfolio() {
   const [works, setWorks] = useState<any[]>([]);
@@ -8,9 +9,7 @@ export function Portfolio() {
   const [filterStatus, setFilterStatus] = useState<string>("All");
 
   useEffect(() => {
-    fetch("/api/content/portfolio")
-      .then(res => res.json())
-      .then(setWorks);
+    getPortfolioList().then(setWorks);
   }, []);
 
   // Normalize length types

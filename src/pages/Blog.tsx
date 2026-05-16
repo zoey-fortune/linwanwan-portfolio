@@ -2,14 +2,13 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { format } from "date-fns";
 import { motion } from "motion/react";
+import { getBlogList } from "../lib/content";
 
 export function Blog() {
   const [posts, setPosts] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch("/api/content/blog")
-      .then(res => res.json())
-      .then(setPosts);
+    getBlogList().then(setPosts);
   }, []);
 
   return (

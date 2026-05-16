@@ -3,15 +3,16 @@ import { useParams, Link } from "react-router-dom";
 import Markdown from "react-markdown";
 import { motion } from "motion/react";
 import { ArrowLeft, BookOpen } from "lucide-react";
+import { getPortfolioItem } from "../lib/content";
 
 export function PortfolioDetail() {
   const { slug } = useParams();
   const [work, setWork] = useState<any>(null);
 
   useEffect(() => {
-    fetch(`/api/content/portfolio/${slug}`)
-      .then(res => res.json())
-      .then(setWork);
+    if (slug) {
+      getPortfolioItem(slug).then(setWork);
+    }
   }, [slug]);
 
   if (!work) return <div className="animate-pulse h-96 bg-charcoal/5 rounded-2xl"></div>;

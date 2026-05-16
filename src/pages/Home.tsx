@@ -2,19 +2,15 @@ import { useEffect, useState } from "react";
 import Markdown from "react-markdown";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
+import { getHomeContent, getPortfolioList } from "../lib/content";
 
 export function Home() {
   const [data, setData] = useState<any>(null);
   const [works, setWorks] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch("/api/content/home/index")
-      .then(res => res.json())
-      .then(setData);
-      
-    fetch("/api/content/portfolio")
-      .then(res => res.json())
-      .then(res => setWorks(res.slice(0, 3))); // Get top 3
+    getHomeContent().then(setData);
+    getPortfolioList().then(res => setWorks(res.slice(0, 3)));
   }, []);
 
   if (!data) return <div className="animate-pulse flex space-x-4 h-96 bg-charcoal/5 rounded-2xl"></div>;

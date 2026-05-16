@@ -4,15 +4,16 @@ import Markdown from "react-markdown";
 import { format } from "date-fns";
 import { ArrowLeft } from "lucide-react";
 import { motion } from "motion/react";
+import { getBlogItem } from "../lib/content";
 
 export function BlogDetail() {
   const { slug } = useParams();
   const [post, setPost] = useState<any>(null);
 
   useEffect(() => {
-    fetch(`/api/content/blog/${slug}`)
-      .then(res => res.json())
-      .then(setPost);
+    if (slug) {
+      getBlogItem(slug).then(setPost);
+    }
   }, [slug]);
 
   if (!post) return <div className="animate-pulse h-96 bg-charcoal/5 rounded-2xl max-w-3xl mx-auto"></div>;
